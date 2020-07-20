@@ -39,11 +39,26 @@ def test_parity(nums,expected,func):
             return False
     return True
 
+# propagate rightmost set bit to the right (eg. 0101000 -> 0101111)
+def propagate(x):
+    # get rightmost set bit
+    rmsb = x & -(x-1)
+    return x | (rmsb-1)
+
+def powmod(x,pow):
+    return x & (pow-1)
+
+def isPowOf2(x):
+    return x == 1 or x == (x & -(x-1))
 def main():
     # print(parity_1(1),parity_1(3),parity_1(16),parity_1(17))
     # print(parity_2(1),parity_2(3),parity_2(16),parity_2(17))
     print(f'parity_1: {test_parity(testCases,testResults,parity_1)}')
     print(f'parity_2: {test_parity(testCases,testResults,parity_2)}')
     print(f'parity_3: {test_parity(testCases,testResults,parity_3)}')
+    print(propagate(2))
+    print(powmod(77,64))
+    print(isPowOf2(16),isPowOf2(1),isPowOf2(0),isPowOf2(33),isPowOf2(4096))
+    
 if __name__ == "__main__":
     main()
