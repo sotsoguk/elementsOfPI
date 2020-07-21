@@ -24,6 +24,17 @@ def palindrome(x):
 # compare indivual digits
 def palindrome_2(x):
     # first find number of digits
-    num_digits = 
+    num_digits = math.floor(math.log10(x)) + 1
+    msd_mask = 10**(num_digits-1)
+    for _ in range(num_digits // 2):
+        # check if msd and lsd are equal
+        if x // msd_mask != x%10:
+            return False
+        # cut of lsd and msd and change mask for msd
+        x %= msd_mask
+        x //= 10
+        msd_mask //= 100
+    return True
 if __name__ == "__main__":
-    print(palindrome(1232))
+    print(palindrome(12321))
+    print(palindrome_2(12321))
