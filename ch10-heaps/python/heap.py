@@ -24,7 +24,6 @@ class Heap():
         if self.lastpos > self.capacity:
             self.__double_capacity()
         self.data[self.lastpos] = v
-        # print("HERE:",self.data)
         # heapify to max heap
         currPos = self.lastpos
         while currPos >= 1:
@@ -48,9 +47,7 @@ class Heap():
         if self.lastpos == 0:
             return None
         maxValue = self.data[1]
-        # print("Beofre Swapped:",self.data)
         self.data[1] = self.data[self.lastpos]
-        # print("Swapped:",self.data)
         self.lastpos -= 1
         # heapify again, bubble down
         currPos = 1
